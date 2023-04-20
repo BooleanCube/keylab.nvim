@@ -48,15 +48,19 @@ local generate_script = function ()
 end
 
 M._set_mapping = function ()
-
     for i=32,126,1 do
         local chr = string.char(i)
         vim.keymap.set('i', chr, function() M._key_pressed(chr) end)
     end
+    vim.keymap.set('i', "<BS>", function () M._key_pressed("<BS>") end)
+    vim.keymap.set('i', "<CR>", function () M._key_pressed("<CR>") end)
+    vim.keymap.set('i', "<Tab>", function () M._key_pressed("<Tab>") end)
 end
 
 M._key_pressed = function (letter)
-    return 0
+    if letter == "<Tab>" then
+        return false
+    end
 end
 
 M.start = function ()
