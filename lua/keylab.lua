@@ -47,20 +47,30 @@ local generate_script = function ()
     M.width = max_width
 end
 
-M._set_mapping = function ()
-    for i=32,126,1 do
-        local chr = string.char(i)
-        vim.keymap.set('i', chr, function() M._key_pressed(chr) end)
-    end
-    vim.keymap.set('i', "<BS>", function () M._key_pressed("<BS>") end)
-    vim.keymap.set('i', "<CR>", function () M._key_pressed("<CR>") end)
-    vim.keymap.set('i', "<Tab>", function () M._key_pressed("<Tab>") end)
-end
-
-M._key_pressed = function (letter)
+local key_pressed = function (letter)
     if letter == "<Tab>" then
         return false
     end
+
+    if letter == "<BS>" then
+        return false
+    end
+
+    if letter == "<CR>" then
+        return false
+    end
+
+    return true
+end
+
+local set_mapping = function ()
+    for i=32,126,1 do
+        local chr = string.char(i)
+        vim.keymap.set('i', chr, function() key_pressed(chr) end)
+    end
+    vim.keymap.set('i', "<BS>", function () key_pressed("<BS>") end)
+    vim.keymap.set('i', "<CR>", function () key_pressed("<CR>") end)
+    vim.keymap.set('i', "<Tab>", function () key_pressed("<Tab>") end)
 end
 
 M.start = function ()
