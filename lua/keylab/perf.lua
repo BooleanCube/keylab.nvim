@@ -31,6 +31,10 @@ M.load_perf = function ()
     end
 end
 
+M.delete_db = function ()
+    os.remove(storage_path)
+end
+
 M.repr = function (cpm)
 
     local pr = M.performance[1]

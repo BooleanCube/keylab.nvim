@@ -2,7 +2,7 @@ local M = {}
 local api = vim.api
 
 local colors = {
-    Directory = { fg="#B80026" },
+    Directory = { fg="#B8BB26" },
     ErrorMsg = { bg="#FB4934" }
 }
 

@@ -194,6 +194,9 @@ local key_pressed = function (letter)
 
             M.start_time = os.time()
         end
+        if letter == "q" then
+            api.nvim_win_close(0, true)
+        end
         return false
     end
 
@@ -251,6 +254,9 @@ local set_mapping = function ()
     end
     vim.keymap.set('i', "<BS>", function () key_pressed("<BS>") end, {buffer=0})
     vim.keymap.set('i', "<CR>", function () key_pressed("<CR>") end, {buffer=0})
+    vim.keymap.set('n', "<CR>", function () key_pressed("<CR>") end, {buffer=0})
+    vim.keymap.set('i', "<CR>", function () key_pressed("q") end, {buffer=0})
+    vim.keymap.set('n', "<CR>", function () key_pressed("q") end, {buffer=0})
     -- vim.keymap.set('i', "<Tab>", function () key_pressed("<Tab>") end, {buffer=0})
 end
 
