@@ -1,4 +1,5 @@
 local Path = require("plenary.path")
+local utils = require("keylab.utils")
 
 local fn = vim.fn
 local data_path = fn.stdpath("data")
@@ -17,28 +18,33 @@ local update_json = function ()
     Path:new(storage_path):write(fn.json_encode(M.performance), 'w')
 end
 
+M.calculate_cpm = function (time, size)
+    return size/time * 60
+end
+
 M.load_perf = function ()
     local ok, res = pcall(load_json, storage_path)
     if ok then
         M.performance = res
     else
-        M.performance = {0, 0, 0, 0}
+        M.performance = {0, 0, 0}
     end
 end
 
-M.repr = function (time)
+M.repr = function (cpm)
+
     local pr = M.performance[1]
     local avg = M.performance[2]
     local cnt = M.performance[3]
 
-    pr = math.min(pr, time)
+    pr = math.max(pr, cpm)
+    avg = (avg*cnt+cpm)/(cnt+1)
     cnt = cnt + 1
-    avg = (avg*cnt+time)/cnt
 
     M.performance = {pr, avg, cnt}
     update_json()
 
-    return "Best: " .. pr .. ", Avg: " .. avg
+    return "Best: " .. utils.round(pr, 1) .. " CPM, Avg: " .. utils.round(avg, 1) .. " CPM"
 end
 
 return M
