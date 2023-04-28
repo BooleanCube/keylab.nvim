@@ -1,0 +1,127 @@
+*keylab.txt*    A typing speed plugin to become faster at coding.
+
+====================================================================================
+                                                                 *keylab.nvim*
+
+Keylab.nvim is a plugin that enables you to practice typing on your
+Neovim configuration. Boost your productivity by practicing your Neovim 
+keybindings and compete with yourself!
+
+Read the Github Wiki to learn about installation, setup and configuration.
+
+To find out more:
+https://github.com/BooleanCube/keylab.nvim
+
+====================================================================================
+CONTENTS                                                     *keylab-contents*
+
+    1. INTRODUCTION......................|keylab|
+    2. FUNCTIONS.........................|keylab-functions|
+    3. COMMANDS..........................|keylab-commands|
+
+====================================================================================
+INTRODUCTION                                                          *keylab*
+
+Keylab.nvim aims to aid new neovim users to boost their productivity 
+by practicing their keybinding configurations multiple times. If used 
+enough times, users will start to see an increase in their coding 
+speed. 
+
+Keylab.nvim also serves as a plugin to measure your coding speed. 
+Similar to https://www.speedtyper.dev/ (by codicocodes), except with 
+custom scripts and your personal vim configuration. Measure your true 
+coding speed on neovim and aim for even higher results. All languages 
+that your configuration support, are also supported.
+
+This plugin was heavily inspired by my first application:
+https://github.com/BooleanCube/NeovimKeys
+This application written in Java helps new users get used to the classic 
+HJKL movement keys but nothing beyond that. Thus, keylab.nvim to complete 
+the tool.
+
+Keylab.nvim offers many features and functionalities:
+    * Customizable configuration and setup
+    * Simple mechanics and free controls
+    * Multilingual support
+    * Clean documentation
+    * Efficient & optimized plugin
+
+====================================================================================
+FUNCTIONS                                                   *keylab-functions*
+
+
+keylab.setup({opts})                                          *keylab.setup()*
+
+    Setup the keylab configuration using the values in {opts} 
+    table.
+
+    Note:
+        Make sure to call this function before you use |keylab.start()|
+
+    Parameters: ~
+    • {opts}    Configurable variables are the following:
+                • LINES: The amount of lines you want the 
+                  script to be to measure your speed.
+                • correct_fg: The foreground color for 
+                  correct text.
+                • wrong_bg: The background color for wrong 
+                  text.
+
+
+        keylab.setup({
+            LINES = 10,
+            correct_fg = "#B8BB26",
+            wrong_bg = "#FB4934"
+        })
+
+
+keylab.start()                                                *keylab.start()*
+
+    Starts a keylab coding session where typing speed will be 
+    measured. Performance will be displayed once you complete 
+    copying the script.
+
+
+        keylab.start()
+
+
+====================================================================================
+COMMANDS                                                     *keylab-commands*
+
+
+:KeylabReload                                                  *:KeylabReload*
+
+    Loses all the cached data from the keylab.nvim plugin.
+    (Plugin doesn't take any parameters)
+
+        :KeylabReload
+
+
+:KeylabStart                                                    *:KeylabStart*
+
+    Starts a keylab coding session where typing speed will be 
+    measured. Performance will be displayed once you complete 
+    copying the script.
+
+    This command directly runs |keylab.start()|
+
+        :KeylabStart
+
+
+:KeylabClearPerf                                            *:KeylabClearPerf*
+
+    Clears the stored performance database. All tracked 
+    statistics will be lost and unretrievable.
+
+    Note:
+        Once the command is used it can not be returned. 
+        So please use it very carefully.
+
+        :KeylabClearPerf
+
+
+====================================================================================
+
+
+vim:tw=78:ts=8:ft=help:norl:
+
