@@ -18,8 +18,8 @@ local update_json = function ()
     Path:new(storage_path):write(fn.json_encode(M.performance), 'w')
 end
 
-M.calculate_cpm = function (time, size)
-    return utils.round(size/time * 60, 1)
+M.calculate_cpm = function (time, size, acc)
+    return utils.round(size/time * 60 * (acc/1), 1)
 end
 
 M.load_perf = function ()

@@ -5,22 +5,19 @@ local perf = require("keylab.perf")
 
 -- Default Configuration
 local LINES = 10
-M.accurate_msr = false
+M.accurate_msr = true
 
 M.setup = function (opts)
     local options = opts or {}
 
     M.height = options["LINES"] or M.height
     LINES = M.height
-    M.accurate_msr = options["force_accuracy"] or M.accurate_msr
+    if options["force_accuracy"] ~= nil then
+        M.accurate_msr = options["force_accuracy"]
+    end
 
     utils.custom_colors(opts)
 end
-
-utils.custom_colors({
-    correct_fg = "#ffffff",
-    wrong_bg = "#000000"
-})
 
 local reset_state = function ()
     M.ended = false
@@ -34,17 +31,18 @@ local reset_state = function ()
     M.height = LINES
     M.start_time = nil
     M.duration = nil
+    M.accuracy = 0
 end
 
 reset_state()
 
 local open_menu = function ()
     perf.load_perf()
-    local cpm = perf.calculate_cpm(M.duration, M.goal)
+    local cpm = perf.calculate_cpm(M.duration, M.goal, M.accuracy)
     local menu_text = {
         "",
         "",
-        utils.center_text(string.format("Performance: %d CPM", cpm), M.width),
+        utils.center_text(string.format("Speed: %d CPM, Accuracy: %d%%", cpm, M.accuracy*100), M.width),
         "",
         utils.center_text(perf.repr(cpm), M.width),
         "",
@@ -119,6 +117,7 @@ end
 
 local highlight_buf = function ()
     local text_score = 0
+    local correct = 0
     utils.clear_hl()
 
     local buf_lines = {}
@@ -166,9 +165,10 @@ local highlight_buf = function ()
                     if new_status ~= status then
                         if status == "right" then
                             text_score = text_score + (col-last_idx)
+                            correct = correct + (col-last_idx)
                             utils.green_hl(row, last_idx, col-1)
                         elseif status == "wrong" then
-                            if M.accurate_msr then
+                            if M.accurate_msr == false then
                                 text_score = text_score + (col-last_idx)
                             end
                             utils.red_hl(row, last_idx, col-1)
@@ -180,9 +180,10 @@ local highlight_buf = function ()
             end
             if status == "right" then
                 text_score = text_score + (#buf_lines[row]-last_idx+1)
+                correct = correct + (#buf_lines[row]-last_idx+1)
                 utils.green_hl(row, last_idx, #buf_lines[row])
             elseif status == "wrong" then
-                if M.accurate_msr then
+                if M.accurate_msr == false then
                     text_score = text_score + (#buf_lines[row]-last_idx+1)
                 end
                 utils.red_hl(row, last_idx, #buf_lines[row])
@@ -195,6 +196,8 @@ local highlight_buf = function ()
         M.duration = os.time()-M.start_time
         open_menu()
     end
+
+    M.accuracy = utils.round(correct / M.goal, 2)
 end
 
 local key_pressed = function (letter)
