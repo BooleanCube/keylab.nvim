@@ -19,7 +19,7 @@ local update_json = function ()
 end
 
 M.calculate_cpm = function (time, size)
-    return size/time * 60
+    return utils.round(size/time * 60, 1)
 end
 
 M.load_perf = function ()

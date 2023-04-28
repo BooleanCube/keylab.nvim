@@ -3,15 +3,24 @@ local api = vim.api
 local utils = require("keylab.utils")
 local perf = require("keylab.perf")
 
+-- Default Configuration
 local LINES = 10
+M.accurate_msr = false
 
 M.setup = function (opts)
     local options = opts or {}
+
     M.height = options["LINES"] or M.height
     LINES = M.height
+    M.accurate_msr = options["force_accuracy"] or M.accurate_msr
 
     utils.custom_colors(opts)
 end
+
+utils.custom_colors({
+    correct_fg = "#ffffff",
+    wrong_bg = "#000000"
+})
 
 local reset_state = function ()
     M.ended = false
@@ -31,7 +40,7 @@ reset_state()
 
 local open_menu = function ()
     perf.load_perf()
-    local cpm = utils.round(perf.calculate_cpm(M.duration, M.goal), 1)
+    local cpm = perf.calculate_cpm(M.duration, M.goal)
     local menu_text = {
         "",
         "",
@@ -159,6 +168,9 @@ local highlight_buf = function ()
                             text_score = text_score + (col-last_idx)
                             utils.green_hl(row, last_idx, col-1)
                         elseif status == "wrong" then
+                            if M.accurate_msr then
+                                text_score = text_score + (col-last_idx)
+                            end
                             utils.red_hl(row, last_idx, col-1)
                         end
                         last_idx = col
@@ -170,6 +182,9 @@ local highlight_buf = function ()
                 text_score = text_score + (#buf_lines[row]-last_idx+1)
                 utils.green_hl(row, last_idx, #buf_lines[row])
             elseif status == "wrong" then
+                if M.accurate_msr then
+                    text_score = text_score + (#buf_lines[row]-last_idx+1)
+                end
                 utils.red_hl(row, last_idx, #buf_lines[row])
             end
         end

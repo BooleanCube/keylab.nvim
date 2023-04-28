@@ -2,7 +2,7 @@ local M = {}
 local api = vim.api
 
 local colors = {
-    Directory = { fg="#B8BB26" },
+    Directory = { fg="#B80026" },
     ErrorMsg = { bg="#FB4934" }
 }
 
@@ -26,8 +26,12 @@ end
 set_colors()
 
 M.custom_colors = function (opts)
-    colors["Directory"] = opts["correct_fg"] or colors["Directory"]
-    colors["ErrorMsg"] = opts["wrong_bg"] or colors["ErrorMsg"]
+    if opts["correct_fg"] ~= nil then
+        colors["Directory"] = { fg=opts["correct_fg"] }
+    end
+    if opts["wrong_bg"] ~= nil then
+        colors["ErrorMsg"] = { bg=opts["wrong_bg"] }
+    end
     set_colors()
 end
 
