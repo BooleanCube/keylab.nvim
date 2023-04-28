@@ -12,10 +12,12 @@ describe("keylab configuration testing", function()
         local keylab = require("keylab")
         keylab.setup({
             LINES = 15,
+            force_accuracy = true,
             correct_fg = "#ffffff",
             wrong_bg = "#000000"
         })
         assert.equals(15, keylab.height)
+        assert.equals(true, keylab.accurate_msr)
     end)
 end)
 
