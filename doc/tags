@@ -1,0 +1,11 @@
+:KeylabClearPerf	keylab.txt	/*:KeylabClearPerf*
+:KeylabReload	keylab.txt	/*:KeylabReload*
+:KeylabStart	keylab.txt	/*:KeylabStart*
+keylab	keylab.txt	/*keylab*
+keylab-commands	keylab.txt	/*keylab-commands*
+keylab-contents	keylab.txt	/*keylab-contents*
+keylab-functions	keylab.txt	/*keylab-functions*
+keylab.nvim	keylab.txt	/*keylab.nvim*
+keylab.setup()	keylab.txt	/*keylab.setup()*
+keylab.start()	keylab.txt	/*keylab.start()*
+keylab.txt	keylab.txt	/*keylab.txt*

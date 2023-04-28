@@ -66,6 +66,8 @@ keylab.setup({opts})                                          *keylab.setup()*
                   correct text.
                 • wrong_bg: The background color for wrong 
                   text.
+                • force_accuracy: Forces the player's accuracy 
+                  to be 100% before display performance stats.
 
 
         keylab.setup({
