@@ -255,8 +255,8 @@ local set_mapping = function ()
     vim.keymap.set('i', "<BS>", function () key_pressed("<BS>") end, {buffer=0})
     vim.keymap.set('i', "<CR>", function () key_pressed("<CR>") end, {buffer=0})
     vim.keymap.set('n', "<CR>", function () key_pressed("<CR>") end, {buffer=0})
-    vim.keymap.set('i', "<CR>", function () key_pressed("q") end, {buffer=0})
-    vim.keymap.set('n', "<CR>", function () key_pressed("q") end, {buffer=0})
+    vim.keymap.set('i', "q", function () key_pressed("q") end, {buffer=0})
+    vim.keymap.set('n', "q", function () key_pressed("q") end, {buffer=0})
     -- vim.keymap.set('i', "<Tab>", function () key_pressed("<Tab>") end, {buffer=0})
 end
 
