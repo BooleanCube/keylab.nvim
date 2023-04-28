@@ -3,6 +3,10 @@ fun! KeylabReload()
     lua package.loaded["keylab.utils"] = nil
 endfun
 
-com! KeylabReload call KeylabReload()
+fun! KeylabStart()
+    lua require("keylab").start()
+endfun
 
-" add setup configuration here through lua
+com! KeylabReload call KeylabReload()
+com! KeylabStart call KeylabStart()
+
