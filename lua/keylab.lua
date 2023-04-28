@@ -40,7 +40,7 @@ local open_menu = function ()
         utils.center_text(perf.repr(cpm), M.width),
         "",
         utils.center_text("Press <CR> to restart the game with the same script", M.width),
-        utils.center_text("Press q to close keylab", M.width)
+        utils.center_text("Press q to close keylab", M.width),
         "",
         ""
     }
