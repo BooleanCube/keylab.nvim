@@ -7,7 +7,7 @@
     <a href="LICENSE.md"><img alt="Software License" src="https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square"></a>
     <a href="https://github.com/BooleanCube/keylab.nvim/actions"><img alt="Actions" src="https://img.shields.io/github/actions/workflow/status/BooleanCube/keylab.nvim/main.yml?style=flat-square&branch=master"></a>
     <a href="doc/keylab.txt"><img alt="Doc" src="https://img.shields.io/badge/doc-%3Ah%20keylab.txt-brightgreen.svg?style=flat-square"></a>
-    <a href="https://github.com/BooleanCube/keylab.nvim"><img alt="Visit counter" src="https://img.shields.io/github/search/BooleanCube/keylab.nvim/goto?style=flat-square"></a>
+    <a href="https://github.com/BooleanCube/keylab.nvim/issues"><img alt="Issues" src="https://img.shields.io/github/issues/BooleanCube/keylab.nvim?style=flat-square"></a>
     <a href="https://github.com/BooleanCube/keylab.nvim"><img alt="size" src="https://img.shields.io/github/repo-size/BooleanCube/keylab.nvim.svg?style=flat-square"></a>
   </p>
   </a>
@@ -145,7 +145,7 @@ My biggest improvements were: being able to locate and press weird keys (like ">
 
 - Keybinding the start function in Vimscript:
   ```vim
-  nnoremap <leader>kl <cmd>KeylabStart<cr>
+  nnoremap <silent> <leader>kl :KeylabStart<cr>
   ```
 
 
