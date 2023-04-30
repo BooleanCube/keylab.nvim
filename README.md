@@ -152,6 +152,7 @@ My biggest improvements were: being able to locate and press weird keys (like ">
 ### TODO
 - [ ] Fix custom highlighting options
 - [ ] add more configuration options ()
+- [ ] allow people to use auto completion
 
 ----
 
