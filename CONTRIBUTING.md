@@ -20,7 +20,7 @@ If you want to go the usual route and run the project locally, though:
 
 Then in neovim:
 
-- Install the local fork of the repository and configure it to your liking as shown in the [README.md](README.md)
+- Install the local fork of the repository in neovim (`use '/home/user/path/to/repo/keylab.nvim'`) and configure it to your liking as shown in the [README.md](README.md)
 
 And you should be ready to go!
 
