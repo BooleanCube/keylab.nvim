@@ -3,7 +3,6 @@ describe("statistics calculation testing", function()
     before_each(function ()
         package.loaded["keylab.perf"] = nil
         package.loaded["keylab.utils"] = nil
-
     end)
 
     it("can be required", function()

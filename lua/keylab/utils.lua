@@ -35,16 +35,16 @@ M.custom_colors = function (opts)
     set_colors()
 end
 
-M.green_hl = function (row, col_start, col_end)
-    api.nvim_buf_add_highlight(0, ns, "Directory", row-1, col_start-1, col_end)
+M.green_hl = function (buf, row, col_start, col_end)
+    api.nvim_buf_add_highlight(buf, ns, "Directory", row-1, col_start-1, col_end)
 end
 
-M.red_hl = function (row, col_start, col_end)
-    api.nvim_buf_add_highlight(0, ns, "ErrorMsg", row-1, col_start-1, col_end)
+M.red_hl = function (buf, row, col_start, col_end)
+    api.nvim_buf_add_highlight(buf, ns, "ErrorMsg", row-1, col_start-1, col_end)
 end
 
-M.clear_hl = function()
-    api.nvim_buf_clear_namespace(0, ns, 0, -1)
+M.clear_hl = function(buf)
+    api.nvim_buf_clear_namespace(buf, ns, 0, -1)
 end
 
 return M

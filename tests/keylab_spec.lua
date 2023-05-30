@@ -11,7 +11,7 @@ describe("keylab configuration testing", function()
     it("can be configured", function ()
         local keylab = require("keylab")
         keylab.setup({
-            LINES = 15,
+            lines = 15,
             force_accuracy = true,
             correct_fg = "#ffffff",
             wrong_bg = "#000000"
