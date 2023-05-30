@@ -20,7 +20,7 @@
 
 <br>
 
-![image](https://github.com/BooleanCube/keylab.nvim/blob/f794722563d454a756147aaad94a9034dfd42272/doc/usage.gif)
+![image](https://github.com/BooleanCube/keylab.nvim/blob/main/doc/usage.gif)
 
 <br>
 
@@ -44,6 +44,24 @@ To use keylab effectively, I would suggest 3-5 practice sessions everyday before
 </p>
 <p>
 My biggest improvements were: being able to locate and press weird keys (like ">(#{") without having to look at the keyboard. I also saw a decent increase in accuracy which means I don't mess up on weird keys that often anymore.
+</p>
+
+## Stages
+
+### Typing
+<p>
+  To start a session, you can use <code>:KeylabStart</code> or use the preferred keybinding you used in your nvim configuration setup. <br>
+  This will open up a script window (script excerpt) and a blank window (typing playground). The goal is to copy the script into the blank window as fast as possible. Your typing speed will be measured and recorded for you.
+</p>
+
+### Statistics
+<p>
+  After you finish copying the excerpted script into the <code>typing playground window</code>, the windows will close an open a separate individual window with the measured statistics of your performance of the current session. <br>
+  <i>These statistics will be measured for quality of usage and the measured data can be reset very easily using <code>:KeylabClearPerf</code></i>
+</p>
+<p>
+  Press <code>q</code> to quit the current keylab session and <code>CR</code> to start a new session with the same buffer of the excerpted script. <br>
+  <i>The excerpted script won't necessarily be the same.</i>
 </p>
 
 ## Setup
