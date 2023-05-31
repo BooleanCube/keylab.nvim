@@ -59,10 +59,6 @@ My biggest improvements were: being able to locate and press weird keys (like ">
   </p>
 </div>
 
-<br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br>
-<br><br>
-
 ### Statistics
 
 <div>
@@ -76,9 +72,6 @@ My biggest improvements were: being able to locate and press weird keys (like ">
     <i>The excerpted script won't necessarily be the same.</i>
   </p>
 </div>
-
-<br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br>
 
 ## Setup
 ### Prerequisites
