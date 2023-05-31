@@ -147,7 +147,7 @@ My biggest improvements were: being able to locate and press weird keys (like ">
   ```lua
   local keylab = require("keylab")
   keylab.setup({
-      LINES = 15, -- 10 by default
+      lines = 15, -- 10 by default
       force_accuracy = false, -- true by default
       correct_fg = "#FFFFFF", -- #B8BB26 by default
       wrong_bg = "#000000" -- #FB4934 by default
@@ -160,7 +160,7 @@ My biggest improvements were: being able to locate and press weird keys (like ">
   lua << EOF
       local keylab = require("keylab")
       keylab.setup({
-          LINES = 10,
+          lines = 10,
           force_accuracy = true,
           correct_fg = "#B8BB26",
           wrong_bg = "#FB4934"
