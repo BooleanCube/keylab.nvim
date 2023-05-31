@@ -60,7 +60,7 @@ keylab.setup({opts})                                          *keylab.setup()*
 
     Parameters: ~
     • {opts}    Configurable variables are the following:
-                • LINES: The amount of lines you want the 
+                • lines: The amount of lines you want the 
                   script to be to measure your speed.
                 • correct_fg: The foreground color for 
                   correct text.
@@ -71,7 +71,7 @@ keylab.setup({opts})                                          *keylab.setup()*
 
 
         keylab.setup({
-            LINES = 10,
+            lines = 10,
             correct_fg = "#B8BB26",
             wrong_bg = "#FB4934"
         })
