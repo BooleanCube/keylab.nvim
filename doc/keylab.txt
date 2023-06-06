@@ -87,6 +87,14 @@ keylab.start()                                                *keylab.start()*
         keylab.start()
 
 
+keylab.close_game()                                      *keylab.close_game()*
+
+    Stops a keylab coding session and closes all open buffers 
+    and windows for the session.
+
+        keylab.close_game()
+
+
 ====================================================================================
 COMMANDS                                                     *keylab-commands*
 
@@ -108,6 +116,17 @@ COMMANDS                                                     *keylab-commands*
     This command directly runs |keylab.start()|
 
         :KeylabStart
+
+
+:KeylabStop                                                      *:KeylabStop*
+    
+    Stops an already running keylab coding session. If a 
+    keylab session is not currently open, this command will 
+    not affect anything.
+
+    This command directly runs |keylab.close_game()|
+
+        :KeylabStop
 
 
 :KeylabClearPerf                                            *:KeylabClearPerf*

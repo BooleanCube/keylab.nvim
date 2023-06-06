@@ -21,8 +21,10 @@ M.setup = function (opts)
 
     utils.custom_colors(opts)
 end
+
 local reset_state = function ()
     M.ended = false
+    M.obuf = nil
     M.rbuf = nil
     M.wbuf = nil
     M.mbuf = nil
@@ -45,7 +47,7 @@ local menu_selection = function (letter)
     if M.ended then
         if letter == "<CR>" then
             api.nvim_win_close(M.mwin, true)
-            M.start()
+            M.open_game()
         end
         if letter == "q" then
             api.nvim_win_close(M.mwin, true)
@@ -116,7 +118,7 @@ local generate_script = function ()
         return true
     end
 
-    local script_buf = api.nvim_get_current_buf()
+    local script_buf = M.obuf
     local script = api.nvim_buf_get_lines(
         script_buf,
         1,
@@ -219,12 +221,13 @@ local highlight_buf = function ()
     end
 end
 
-M.start = function ()
+M.open_game = function ()
+    M.width = 50    -- for game window
+
     local clients = lsp.get_active_clients(
-        { bufnr=api.nvim_get_current_buf() }
+        { bufnr=M.obuf }
     )
 
-    reset_state()
     local successful = generate_script()
     if not successful then
         return false
@@ -281,6 +284,34 @@ M.start = function ()
     M.start_time = os.time()
 
     return successful
+end
+
+M.close_game = function ()
+    vim.schedule(function ()
+        -- api.nvim_buf_detach(M.wbuf)
+        if M.rwin ~= nil then
+            api.nvim_win_close(M.rwin, true)
+            M.rwin = nil
+        end
+        if M.wwin ~= nil then
+            api.nvim_win_close(M.wwin, true)
+            M.wwin = nil
+        end
+        if M.rbuf ~= nil then
+            api.nvim_buf_delete(M.rbuf, {force=true})
+            M.rbuf = nil
+        end
+        if M.wbuf ~= nil then
+            api.nvim_buf_delete(M.wbuf, {force=true})
+            M.wbuf = nil
+        end
+    end)
+end
+
+M.start = function ()
+    reset_state()
+    M.obuf = api.nvim_get_current_buf()
+    M.open_game()
 end
 
 return M

@@ -8,6 +8,10 @@ fun! KeylabStart()
     lua require("keylab").start()
 endfun
 
+fun! KeylabStop()
+    lua require("keylab").close_game()
+endfun
+
 fun! KeylabClearPerf()
     call inputsave()
     let confirmation = input('Are you sure you want to lose all your performance data? [Y/n] ')
@@ -24,4 +28,5 @@ endfun
 
 com! KeylabReload call KeylabReload()
 com! KeylabStart call KeylabStart()
+com! KeylabStop call KeylabStop()
 com! KeylabClearPerf call KeylabClearPerf()

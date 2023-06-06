@@ -11,6 +11,14 @@ M.round = function (num, dp)
     return math.floor(num * mult + 0.5)/mult
 end
 
+M.index_of = function (t, e)
+    local index = {}
+    for k,v in pairs(t) do
+        index[v] = k
+    end
+    return index[e]
+end
+
 M.center_text = function (text, width)
     return string.rep(' ', width/2 - string.len(text)/2) .. text
 end
