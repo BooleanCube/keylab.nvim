@@ -75,7 +75,8 @@ My biggest improvements were: being able to locate and press weird keys (like ">
 
 ## Commands
 - `:KeylabStart` : Start a keylab session
-- `:KeylabClearPerf` : Clear the performance database and reset all data. (Lost data can't be restored so use it carefull)
+- `:KeylabStop` : Stops a keylab session
+- `:KeylabClearPerf` : Clear the performance database and reset all data. (Lost data can't be restored so use it carefully)
 - `:keylabReload` : Reloads keylab in the current neovim instance (more useful for contribtors)
 
 ## Setup
@@ -173,11 +174,13 @@ My biggest improvements were: being able to locate and press weird keys (like ">
 - Keybinding the start function in Lua:
   ```lua
   vim.keymap.set('n', '<leader>kl', require('keylab').start, { desc = "Start a keylab session" })
+  vim.keymap.set('n', '<leader>ks', require('keylab').close_game, { desc = "Stop a keylab session" })
   ```
 
 - Keybinding the start function in Vimscript:
   ```vim
   nnoremap <silent> <leader>kl :KeylabStart<cr>
+  nnoremap <silent> <leader>ks :KeylabStop<cr>
   ```
 
 
