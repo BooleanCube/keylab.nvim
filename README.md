@@ -73,9 +73,10 @@ My biggest improvements were: being able to locate and press weird keys (like ">
   </p>
 </div>
 
-
-
-
+## Commands
+- `:KeylabStart` : Start a keylab session
+- `:KeylabClearPerf` : Clear the performance database and reset all data. (Lost data can't be restored so use it carefull)
+- `:keylabReload` : Reloads keylab in the current neovim instance (more useful for contribtors)
 
 ## Setup
 ### Prerequisites
